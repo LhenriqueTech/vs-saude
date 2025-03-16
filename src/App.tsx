@@ -15,20 +15,20 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
-              <span className="text-2xl font-bold text-emerald-600">NutroHealth</span>
+              <span className="text-2xl font-bold text-emerald-600">VS Saúde</span>
             </div>
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
               <a href="#home" className="text-gray-700 hover:text-emerald-600">Home</a>
-              <a href="#services" className="text-gray-700 hover:text-emerald-600">Services</a>
-              <a href="#about" className="text-gray-700 hover:text-emerald-600">About</a>
-              <a href="#testimonials" className="text-gray-700 hover:text-emerald-600">Testimonials</a>
+              <a href="#services" className="text-gray-700 hover:text-emerald-600">Serviços</a>
+              <a href="#about" className="text-gray-700 hover:text-emerald-600">Sobre</a>
+              <a href="#testimonials" className="text-gray-700 hover:text-emerald-600">Depoimentos</a>
               <button 
                 onClick={() => setShowBooking(true)}
                 className="bg-emerald-600 text-white px-4 py-2 rounded-md hover:bg-emerald-700"
               >
-                Book Appointment
+                Faça Agendamento
               </button>
               <button 
                 onClick={() => setShowPanel(true)}
@@ -55,14 +55,14 @@ function App() {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <a href="#home" className="block px-3 py-2 text-gray-700 hover:text-emerald-600">Home</a>
-              <a href="#services" className="block px-3 py-2 text-gray-700 hover:text-emerald-600">Services</a>
-              <a href="#about" className="block px-3 py-2 text-gray-700 hover:text-emerald-600">About</a>
-              <a href="#testimonials" className="block px-3 py-2 text-gray-700 hover:text-emerald-600">Testimonials</a>
+              <a href="#services" className="block px-3 py-2 text-gray-700 hover:text-emerald-600">Serviços</a>
+              <a href="#about" className="block px-3 py-2 text-gray-700 hover:text-emerald-600">Sobre</a>
+              <a href="#testimonials" className="block px-3 py-2 text-gray-700 hover:text-emerald-600">Depoimentos</a>
               <button 
                 onClick={() => setShowBooking(true)}
                 className="w-full text-left px-3 py-2 text-gray-700 hover:text-emerald-600"
               >
-                Book Appointment
+                Faça Agendamento
               </button>
               <button 
                 onClick={() => setShowPanel(true)}
@@ -85,23 +85,23 @@ function App() {
         <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
-              Transform Your Health Through <span className="text-emerald-400">Nutrition</span>
+              Transforme sua Saúde <span className="text-emerald-400">Nutrologia</span>
             </h1>
             <p className="text-xl mb-8 max-w-2xl">
-              Experience personalized nutrition counseling that empowers you to make lasting lifestyle changes. Our evidence-based approach helps you achieve optimal health and wellness.
+            Experimente um aconselhamento nutricional personalizado que o capacita a fazer mudanças duradouras no estilo de vida. Nossa abordagem baseada em evidências ajuda você a alcançar saúde e bem-estar ideais.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button 
                 onClick={() => setShowBooking(true)}
                 className="bg-emerald-600 text-white px-8 py-3 rounded-md text-lg hover:bg-emerald-700 transition"
               >
-                Schedule a Consultation
+                Marque uma Consulta
               </button>
               <a 
                 href="#learn-more" 
                 className="bg-white text-emerald-600 px-8 py-3 rounded-md text-lg hover:bg-emerald-50 transition flex items-center justify-center"
               >
-                Learn More <ChevronRight className="ml-2" size={20} />
+                Saiba Mais <ChevronRight className="ml-2" size={20} />
               </a>
             </div>
           </div>
@@ -114,15 +114,11 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-4xl font-bold text-emerald-600 mb-2">1000+</div>
-              <div className="text-gray-600">Satisfied Clients</div>
+              <div className="text-gray-600">Pacientes Satisfeitos</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-emerald-600 mb-2">15+</div>
-              <div className="text-gray-600">Years Experience</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-emerald-600 mb-2">95%</div>
-              <div className="text-gray-600">Success Rate</div>
+              <div className="text-gray-600">Anos de Experiência</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-emerald-600 mb-2">24/7</div>

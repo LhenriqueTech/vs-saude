@@ -35,7 +35,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ onClose }) => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-              Full Name
+              Nome Completo
             </label>
             <input
               type="text"
@@ -63,7 +63,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ onClose }) => {
 
           <div>
             <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-              Phone Number
+              Número de Telefone
             </label>
             <input
               type="tel"
@@ -77,7 +77,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ onClose }) => {
 
           <div>
             <label htmlFor="date" className="block text-sm font-medium text-gray-700">
-              Preferred Date
+              Data Escolhida
             </label>
             <input
               type="date"
@@ -91,7 +91,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ onClose }) => {
 
           <div>
             <label htmlFor="time" className="block text-sm font-medium text-gray-700">
-              Preferred Time
+              Horário Escolhido
             </label>
             <input
               type="time"
@@ -105,7 +105,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ onClose }) => {
 
           <div>
             <label htmlFor="reason" className="block text-sm font-medium text-gray-700">
-              Reason for Visit
+              Motivo da Consulta
             </label>
             <textarea
               id="reason"
@@ -120,7 +120,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ onClose }) => {
             type="submit"
             className="w-full bg-emerald-600 text-white py-2 px-4 rounded-md hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
           >
-            Book Appointment
+            Faça Agendamento
           </button>
         </form>
       </div>
