@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X } from 'lucide-react';
+import { X, Trash2 } from 'lucide-react';
 import { appointmentService, Appointment } from '../services/appointmentService';
 
 interface AppointmentPanelProps {
@@ -9,7 +9,6 @@ interface AppointmentPanelProps {
 const AppointmentPanel: React.FC<AppointmentPanelProps> = ({ onClose }) => {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [filter, setFilter] = useState('all');
-  const [editingAppointment, setEditingAppointment] = useState<Appointment | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -24,10 +23,31 @@ const AppointmentPanel: React.FC<AppointmentPanelProps> = ({ onClose }) => {
       setAppointments(data);
       setError('');
     } catch (error) {
-      console.error('Erro ao carregar consultas:', error);
       setError('Erro ao carregar as consultas. Por favor, tente novamente.');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleUpdateStatus = async (appointmentId: string, status: Appointment['status']) => {
+    try {
+      await appointmentService.updateAppointmentStatus(appointmentId, status);
+      await loadAppointments();
+      setError('');
+    } catch (error) {
+      setError('Erro ao atualizar o status da consulta. Por favor, tente novamente.');
+    }
+  };
+
+  const handleDeleteAppointment = async (appointmentId: string) => {
+    if (window.confirm('Tem certeza que deseja excluir esta consulta? Esta ação não pode ser desfeita.')) {
+      try {
+        await appointmentService.deleteAppointment(appointmentId);
+        await loadAppointments();
+        setError('');
+      } catch (error) {
+        setError('Erro ao excluir a consulta. Por favor, tente novamente.');
+      }
     }
   };
 
@@ -35,17 +55,6 @@ const AppointmentPanel: React.FC<AppointmentPanelProps> = ({ onClose }) => {
     if (filter === 'all') return true;
     return appointment.status.toLowerCase() === filter.toLowerCase();
   });
-
-  const handleUpdateStatus = async (appointmentId: string, status: Appointment['status']) => {
-    try {
-      await appointmentService.updateAppointmentStatus(appointmentId, status);
-      await loadAppointments(); // Recarrega a lista após atualização
-      setError('');
-    } catch (error) {
-      console.error('Erro ao atualizar status:', error);
-      setError('Erro ao atualizar o status da consulta. Por favor, tente novamente.');
-    }
-  };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -74,9 +83,9 @@ const AppointmentPanel: React.FC<AppointmentPanelProps> = ({ onClose }) => {
             onChange={(e) => setFilter(e.target.value)}
           >
             <option value="all">Todas as Consultas</option>
-            <option value="pending">Pendentes</option>
-            <option value="confirmed">Confirmadas</option>
-            <option value="cancelled">Canceladas</option>
+            <option value="pendente">Pendentes</option>
+            <option value="confirmada">Confirmadas</option>
+            <option value="cancelada">Canceladas</option>
           </select>
         </div>
 
@@ -149,16 +158,16 @@ const AppointmentPanel: React.FC<AppointmentPanelProps> = ({ onClose }) => {
                         <div>{appointment.telefone}</div>
                       </div>
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-6 py-4 whitespace-nowrap">
                       <span className="text-sm text-gray-500">
                         {appointment.motivo}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
                       {appointment.status === 'pendente' && (
                         <button
                           onClick={() => handleUpdateStatus(appointment.id!, 'confirmada')}
-                          className="text-emerald-600 hover:text-emerald-900 mr-4"
+                          className="text-emerald-600 hover:text-emerald-900"
                         >
                           Confirmar
                         </button>
@@ -171,6 +180,13 @@ const AppointmentPanel: React.FC<AppointmentPanelProps> = ({ onClose }) => {
                           Cancelar
                         </button>
                       )}
+                      <button
+                        onClick={() => handleDeleteAppointment(appointment.id!)}
+                        className="text-gray-600 hover:text-gray-900 ml-2"
+                        title="Excluir consulta"
+                      >
+                        <Trash2 size={16} />
+                      </button>
                     </td>
                   </tr>
                 ))}

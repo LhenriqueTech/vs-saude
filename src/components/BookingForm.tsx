@@ -40,15 +40,6 @@ const BookingForm: React.FC<BookingFormProps> = ({ onClose }) => {
         return;
       }
 
-      console.log('Enviando dados do formulário:', {
-        nomePaciente: formData.name,
-        email: formData.email,
-        telefone: formData.phone,
-        data: formData.date,
-        horario: formData.time,
-        motivo: formData.reason
-      });
-
       await appointmentService.createAppointment({
         nomePaciente: formData.name,
         email: formData.email,
@@ -58,13 +49,11 @@ const BookingForm: React.FC<BookingFormProps> = ({ onClose }) => {
         motivo: formData.reason
       });
 
-      console.log('Consulta agendada com sucesso!');
       setSuccess(true);
       setTimeout(() => {
         onClose();
       }, 2000);
     } catch (error) {
-      console.error('Erro detalhado ao agendar consulta:', error);
       if (error instanceof Error) {
         setError(`Erro ao agendar consulta: ${error.message}`);
       } else {

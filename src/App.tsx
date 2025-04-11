@@ -24,7 +24,6 @@ function App() {
   }, []);
 
   const handleLogin = async (email: string, password: string) => {
-    // A autenticação já é feita no componente LoginForm
     setShowLogin(false);
   };
 
@@ -34,7 +33,7 @@ function App() {
       setIsAuthenticated(false);
       setShowPanel(false);
     } catch (error) {
-      console.error('Erro ao fazer logout:', error);
+      // Tratar erro silenciosamente
     }
   };
 
@@ -159,7 +158,7 @@ function App() {
           <img 
             src="./image/Blog-MedCof-59.png" 
             alt="Dr. Vinícius Sousa" 
-            className="w-full h-full object-cover mix-blend-overlay opacity-40"
+            className="w-full h-full object-cover mix-blend-overlay opacity-35"
           />
         </div>
         <div className="relative z-10 h-full flex items-center">
