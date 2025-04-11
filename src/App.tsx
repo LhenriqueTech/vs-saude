@@ -157,7 +157,7 @@ function App() {
       <div id="home" className="relative h-[600px] bg-gradient-to-r from-emerald-800 to-emerald-600">
         <div className="absolute inset-0">
           <img 
-            src="/dr-vinicius-hero.jpg" 
+            src="./image/Blog-MedCof-59.png" 
             alt="Dr. Vinícius Sousa" 
             className="w-full h-full object-cover mix-blend-overlay opacity-40"
           />
@@ -302,7 +302,7 @@ function App() {
             <div className="space-y-6">
               <div className="aspect-w-4 aspect-h-5 rounded-lg overflow-hidden shadow-xl">
                 <img 
-                  src="/dr-vinicius-profile.jpg" 
+                  src="./image/dr-vinicius-profile.JPG" 
                   alt="Dr. Vinícius Sousa" 
                   className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
                 />
