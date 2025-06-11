@@ -5,8 +5,10 @@ import { auth } from './config/firebase';
 import AppointmentPanel from './components/AppointmentPanel';
 import BookingForm from './components/BookingForm';
 import LoginForm from './components/LoginForm';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showBooking, setShowBooking] = useState(false);
   const [showPanel, setShowPanel] = useState(false);
@@ -76,7 +78,7 @@ function App() {
               {isAuthenticated ? (
                 <>
                   <button 
-                    onClick={() => setShowPanel(true)}
+                    onClick={() => navigate('/dashboard')}
                     className="bg-gray-100 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-200"
                   >
                     Painel de Consultas
