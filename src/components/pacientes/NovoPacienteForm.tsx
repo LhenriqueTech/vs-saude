@@ -135,11 +135,21 @@ const NovoPacienteForm = () => {
             </div>
           )}
 
-          <div className="flex justify-end gap-4 mt-6">
-            <button onClick={handleSalvar} className="bg-emerald-600 text-white px-6 py-2 rounded hover:bg-emerald-700">
-              Salvar Paciente
-            </button>
-          </div>
+        <div className="flex justify-end gap-4 mt-6">
+          <button
+            onClick={() => navigate('/pacientes')}
+            className="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700"
+          >
+            Cancelar
+          </button>
+          <button
+            onClick={handleSalvar}
+            className="bg-emerald-600 text-white px-6 py-2 rounded hover:bg-emerald-700"
+          >
+            Salvar Paciente
+          </button>
+        </div>
+
         </div>
       </main>
     </div>
