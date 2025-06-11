@@ -68,7 +68,10 @@ const Pacientes = () => {
             {pacientesFiltrados.map((p) => (
               <div
                 key={p.id}
-                onClick={() => navigate(`/pacientes/${p.id}`)}
+                onClick={() => {
+                  localStorage.setItem('pacienteSelecionado', JSON.stringify(p));
+                  navigate(`/pacientes/${p.id}`);
+                }}
                 className="flex items-center justify-between p-4 border-b hover:bg-gray-50 cursor-pointer"
               >
                 <div className="flex items-center gap-4">
@@ -96,6 +99,7 @@ const Pacientes = () => {
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
+                      localStorage.setItem('pacienteSelecionado', JSON.stringify(p));
                       navigate(`/pacientes/${p.id}?atendimento=true`);
                     }}
                     className="bg-black text-white px-3 py-1 rounded hover:opacity-90"

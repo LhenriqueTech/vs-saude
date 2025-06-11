@@ -7,20 +7,32 @@ import { User, Calendar, Phone, ClipboardList, Trash2, Edit, FileText, Stethosco
 const PacienteDetalhado = () => {
   const { id } = useParams();
 
-  const [paciente] = useState({
-    id: id || '',
-    nome: 'Andre Ferreira Kerkovsky',
-    dataNascimento: '1980-07-01',
-    cpf: '',
-    sexo: 'Masculino',
-    convenio: '',
-    diagnostico: '',
-    vegano: false,
-    alergias: '',
-    observacoes: '',
-    observacoesPrivadas: '',
-    ultimaConsulta: '2025-06-10'
-  });
+  const pacienteLocal = localStorage.getItem('pacienteSelecionado');
+  const paciente = pacienteLocal
+    ? JSON.parse(pacienteLocal)
+    : {
+        id: id || '',
+        nome: 'Paciente não encontrado',
+        dataNascimento: '',
+        cpf: '',
+        sexo: '',
+        convenio: '',
+        diagnostico: '',
+        vegano: false,
+        alergias: '',
+        observacoes: '',
+        observacoesPrivadas: '',
+        ultimaConsulta: '',
+      };
+
+
+
+      const formatarData = (data: string) => {
+        if (!data) return 'Não informado';
+        const [ano, mes, dia] = data.split('-');
+        return `${dia}/${mes}/${ano}`;
+      };
+      
 
   return (
     <div className="flex">
@@ -53,11 +65,11 @@ const PacienteDetalhado = () => {
               <h3 className="text-md font-semibold mb-3 border-b pb-1">Dados do Paciente</h3>
               <p><strong>Mãe:</strong> Não informado</p>
               <p><strong>Pai:</strong> Não informado</p>
-              <p><strong>Data de Nasc.:</strong> {paciente.dataNascimento}</p>
+              <p><strong>Data de Nasc.:</strong> {formatarData(paciente.dataNascimento)}</p>
               <p><strong>CPF:</strong> {paciente.cpf || 'Não informado'}</p>
               <p><strong>Convênio:</strong> {paciente.convenio || 'Não informado'}</p>
               <p><strong>Sexo:</strong> {paciente.sexo}</p>
-              <p><strong>Última Consulta:</strong> {paciente.ultimaConsulta}</p>
+              <p><strong>Última Consulta:</strong> {formatarData(paciente.ultimaConsulta)}</p>
               <p><strong>Último Diagnóstico:</strong> {paciente.diagnostico || 'Nenhum'}</p>
               <p><strong>Vegano:</strong> {paciente.vegano ? 'Sim' : 'Não'}</p>
               <p><strong>Alergias:</strong> {paciente.alergias || 'Nenhuma'}</p>
